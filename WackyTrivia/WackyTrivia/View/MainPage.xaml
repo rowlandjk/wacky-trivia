@@ -7,8 +7,8 @@
       <Label Text="Wacky Trivia" FontSize="36" HorizontalOptions="Center" />
     </StackLayout>
     <StackLayout VerticalOptions="CenterAndExpand">
-      <Button Text="Play Game" Command="{Binding PlayGameCommand}" />
-      <Button Text="View Stats" Command="{Binding ViewStats}" />
+      <Button Text="Play Game" Clicked="PlayGame" />
+      <Button Text="View Stats" Command="{Binding ViewStatsCommand}" />
     </StackLayout>
   </StackLayout>
 </ContentPage>

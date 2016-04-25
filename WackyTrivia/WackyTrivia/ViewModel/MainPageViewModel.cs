@@ -7,23 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WackyTrivia.Model;
+using WackyTrivia.View;
 using Xamarin.Forms;
 
 namespace WackyTrivia.ViewModel
 {
     class MainPageViewModel : INotifyPropertyChanged
     {
-        public ICommand PlayGameCommand { get; set; }
         public ICommand ViewStatsCommand { get; set; }
 
         public MainPageViewModel()
         {
-            PlayGameCommand = new Command(PlayGame);
             ViewStatsCommand = new Command(ViewStats);
-        }
-
-        public void PlayGame()
-        {
         }
 
         public void ViewStats()

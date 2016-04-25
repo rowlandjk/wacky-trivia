@@ -13,7 +13,14 @@ namespace WackyTrivia.View
         public MainPage()
         {
             InitializeComponent();
-            this.BindingContext = new MainPageViewModel();
+            BindingContext = new MainPageViewModel();
+        }
+
+        public void PlayGame(object sender, EventArgs e)
+        {
+            var game = new GameView();
+            game.BindingContext = new GameViewModel();
+            Navigation.PushAsync(game);
         }
     }
 }

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WackyTrivia.View.GameView">
+  <StackLayout>
+    <StackLayout VerticalOptions="StartAndExpand">
+      <Label Text="Question Here" FontSize="36" HorizontalOptions="Center" />
+    </StackLayout>
+    <StackLayout VerticalOptions="CenterAndExpand">
+      <Button Text="Answer 1" Command="{Binding Answer1Command}" />
+      <Button Text="Answer 2" Command="{Binding Answer2Command}" />
+      <Button Text="Answer 3" Command="{Binding Answer3Command}" />
+      <Button Text="Answer 4" Command="{Binding Answer4Command}" />
+    </StackLayout>
+  </StackLayout>
+</ContentPage>
