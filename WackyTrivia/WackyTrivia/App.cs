@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using WackyTrivia.View;
 using Xamarin.Forms;
 
 namespace WackyTrivia
@@ -12,10 +12,7 @@ namespace WackyTrivia
         public App()
         {
             // The root page of your application
-            MainPage = new ContentPage
-            {
-                Content = new StackLayout{}
-            };
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
