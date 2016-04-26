@@ -9,6 +9,7 @@
     <StackLayout VerticalOptions="CenterAndExpand">
       <Button Text="Play Game" Command="{Binding PlayGameCommand}" />
       <Button Text="View Stats" Command="{Binding ViewStatsCommand}" />
+      <Label Text="{Binding TestItem}" />
     </StackLayout>
   </StackLayout>
 </ContentPage>
