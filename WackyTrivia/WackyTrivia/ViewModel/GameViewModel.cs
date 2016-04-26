@@ -13,6 +13,9 @@ namespace WackyTrivia.ViewModel
 {
     class GameViewModel : BaseViewModel
     {
+        public string QuestionItem { get; set; }
+        public string QuestionQuery { get; set; }
+
         public ICommand Answer1Command { get; set; }
         public ICommand Answer2Command { get; set; }
         public ICommand Answer3Command { get; set; }
@@ -21,6 +24,9 @@ namespace WackyTrivia.ViewModel
 
         public GameViewModel()
         {
+            QuestionItem = "Question Here";
+            QuestionQuery = "Which of the below is closer in value?";
+
             Answer1Command = new Command(Answer1);
             Answer2Command = new Command(Answer2);
             Answer3Command = new Command(Answer3);
