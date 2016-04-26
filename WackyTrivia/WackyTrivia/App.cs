@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WackyTrivia.Abstracts;
 using WackyTrivia.View;
+using WackyTrivia.ViewModel;
 using Xamarin.Forms;
 
 namespace WackyTrivia
 {
     public class App : Application
     {
+        static void RegisterTypes()
+        {
+            ViewFactory.Register<MainPage, MainPageViewModel>();
+            ViewFactory.Register<GameView, GameViewModel>();
+        }
+
         public App()
         {
+            RegisterTypes ();
             // The root page of your application
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(ViewFactory.CreatePage(new MainPageViewModel()));
         }
 
         protected override void OnStart()

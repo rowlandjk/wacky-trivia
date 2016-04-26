@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WackyTrivia.Abstracts;
 using Xamarin.Forms;
 
 namespace WackyTrivia.ViewModel
 {
-    class GameViewModel : INotifyPropertyChanged
+    class GameViewModel : BaseViewModel
     {
         public ICommand Answer1Command { get; set; }
         public ICommand Answer2Command { get; set; }
@@ -40,14 +41,5 @@ namespace WackyTrivia.ViewModel
         public void Answer4()
         {
         }
-
-        #region INPC
-        public void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
     }
 }

@@ -8,12 +8,11 @@ using Xamarin.Forms;
 
 namespace WackyTrivia.View
 {
-	public partial class GameView
+	public partial class GameView : ContentPage
 	{
 		public GameView ()
 		{
 			InitializeComponent ();
-            BindingContext = new GameViewModel();
 		}
 	}
 }
