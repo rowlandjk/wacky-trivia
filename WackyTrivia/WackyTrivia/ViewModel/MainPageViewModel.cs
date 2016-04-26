@@ -16,8 +16,6 @@ namespace WackyTrivia.ViewModel
 
         public MainPageViewModel()
         {
-            var itemList = App.Database.GetItems().ToList();
-            TestItem = itemList[0].Name;
             PlayGameCommand = new Command(PlayGame);
             ViewStatsCommand = new Command(ViewStats);
         }

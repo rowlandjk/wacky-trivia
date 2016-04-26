@@ -48,16 +48,37 @@ namespace WackyTrivia.ViewModel
             }
         }
 
+        //Todo: Refactor into list of structures with <int, string, Command>
+        public int Answer1Id { get; set; }
+        public string Answer1String { get; set; }
         public ICommand Answer1Command { get; set; }
+        public int Answer2Id { get; set; }
+        public string Answer2String { get; set; }
         public ICommand Answer2Command { get; set; }
+        public int Answer3Id { get; set; }
+        public string Answer3String { get; set; }
         public ICommand Answer3Command { get; set; }
+        public int Answer4Id { get; set; }
+        public string Answer4String { get; set; }
         public ICommand Answer4Command { get; set; }
+
         public ICommand ExitGameCommand { get; set; }
         public ICommand ContinueCommand { get; set; }
 
         public GameViewModel()
         {
-            QuestionItem = "Question Here";
+            var itemList = App.Database.GetItems().ToList();
+
+            Answer1Id = itemList[4].Id;
+            Answer1String = itemList[4].Name;
+            Answer2Id = itemList[2].Id;
+            Answer2String = itemList[2].Name;
+            Answer3Id = itemList[1].Id;
+            Answer3String = itemList[1].Name;
+            Answer4Id = itemList[3].Id;
+            Answer4String = itemList[3].Name;
+
+            QuestionItem = itemList[0].Name;
             QuestionQuery = "Which of the below is closer in value?";
             QuestionLayout = true;
             AnswerLayout = false;
