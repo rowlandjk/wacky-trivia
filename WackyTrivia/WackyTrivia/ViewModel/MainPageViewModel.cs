@@ -24,7 +24,9 @@ namespace WackyTrivia.ViewModel
         }
 
         public void ViewStats()
-        { 
+        {
+            var stats = new StatsPageViewModel();
+            Navigation.Push(ViewFactory.CreatePage(stats));
         }
     }
 }

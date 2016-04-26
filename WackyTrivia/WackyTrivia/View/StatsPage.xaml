@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WackyTrivia.View.StatsPage">
+  <StackLayout>
+    <StackLayout VerticalOptions="StartAndExpand">
+      <Label Text="My Stats" FontSize="36" HorizontalOptions="Center" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+      <StackLayout HorizontalOptions="CenterAndExpand">
+        <Label Text="Questions Correct:" FontSize="20"/>
+        <Label Text="Questions Incorrect:" FontSize="20"/>
+      </StackLayout>
+      <StackLayout HorizontalOptions="CenterAndExpand">
+        <Label Text="47" FontSize="20"/>
+        <Label Text="23" FontSize="20"/>
+      </StackLayout>
+    </StackLayout>
+    <StackLayout VerticalOptions="EndAndExpand">
+      <Button Text="Exit Stats" Command="{Binding ExitStatsCommand}" />
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

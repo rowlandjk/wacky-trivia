@@ -15,6 +15,7 @@ namespace WackyTrivia
         {
             ViewFactory.Register<MainPage, MainPageViewModel>();
             ViewFactory.Register<GameView, GameViewModel>();
+            ViewFactory.Register<StatsPage, StatsPageViewModel>();
         }
 
         public App()
