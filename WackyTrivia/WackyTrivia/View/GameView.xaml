@@ -12,5 +12,8 @@
       <Button Text="Answer 3" Command="{Binding Answer3Command}" />
       <Button Text="Answer 4" Command="{Binding Answer4Command}" />
     </StackLayout>
+    <StackLayout VerticalOptions="EndAndExpand">
+      <Button Text="Exit Game" Command="{Binding ExitGameCommand}" VerticalOptions="EndAndExpand" />
+    </StackLayout>
   </StackLayout>
 </ContentPage>

@@ -17,6 +17,7 @@ namespace WackyTrivia.ViewModel
         public ICommand Answer2Command { get; set; }
         public ICommand Answer3Command { get; set; }
         public ICommand Answer4Command { get; set; }
+        public ICommand ExitGameCommand { get; set; }
 
         public GameViewModel()
         {
@@ -24,6 +25,7 @@ namespace WackyTrivia.ViewModel
             Answer2Command = new Command(Answer2);
             Answer3Command = new Command(Answer3);
             Answer4Command = new Command(Answer4);
+            ExitGameCommand = new Command(ExitGame);
         }
 
         public void Answer1()
@@ -40,6 +42,11 @@ namespace WackyTrivia.ViewModel
 
         public void Answer4()
         {
+        }
+
+        public void ExitGame()
+        {
+            Navigation.PopToRoot();
         }
     }
 }
