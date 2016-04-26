@@ -20,7 +20,7 @@ namespace WackyTrivia.ViewModel
         public void PlayGame()
         {
             var game = new GameViewModel();
-            Navigation.PushModal(ViewFactory.CreatePage(game));
+            Navigation.Push(ViewFactory.CreatePage(game));
         }
 
         public void ViewStats()

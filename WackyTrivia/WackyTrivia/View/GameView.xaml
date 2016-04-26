@@ -12,13 +12,21 @@
       </StackLayout>
     </StackLayout>
     <StackLayout VerticalOptions="CenterAndExpand">
-      <Button Text="Answer 1" Command="{Binding Answer1Command}" />
-      <Button Text="Answer 2" Command="{Binding Answer2Command}" />
-      <Button Text="Answer 3" Command="{Binding Answer3Command}" />
-      <Button Text="Answer 4" Command="{Binding Answer4Command}" />
+      <Button Text="Answer 1" Command="{Binding Answer1Command}" IsEnabled="{Binding QuestionLayout}" />
+      <Button Text="Answer 2" Command="{Binding Answer2Command}" IsEnabled="{Binding QuestionLayout}" />
+      <Button Text="Answer 3" Command="{Binding Answer3Command}" IsEnabled="{Binding QuestionLayout}" />
+      <Button Text="Answer 4" Command="{Binding Answer4Command}" IsEnabled="{Binding QuestionLayout}" />
     </StackLayout>
-    <StackLayout VerticalOptions="EndAndExpand">
-      <Button Text="Exit Game" Command="{Binding ExitGameCommand}" VerticalOptions="EndAndExpand" />
+    <StackLayout VerticalOptions="EndAndExpand" IsVisible="{Binding QuestionLayout}">
+      <Button Text="Exit Game" Command="{Binding ExitGameCommand}" VerticalOptions="Center" />
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" IsVisible="{Binding AnswerLayout}">
+      <StackLayout HorizontalOptions="StartAndExpand">
+        <Button Text="Keep Playing" Command="{Binding ContinueCommand}" />
+      </StackLayout>
+      <StackLayout HorizontalOptions="EndAndExpand">
+        <Button Text="Exit Game" Command="{Binding ExitGameCommand}" />
+      </StackLayout>
     </StackLayout>
   </StackLayout>
 </ContentPage>
