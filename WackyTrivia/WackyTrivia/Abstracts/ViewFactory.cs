@@ -4,6 +4,12 @@ using Xamarin.Forms;
 
 namespace WackyTrivia.Abstracts
 {
+    /*
+     * View Factory implemented from Xamarin's TodoMvvm example - Called to create all views
+     * and bind ViewModels to those views.
+     * https://github.com/conceptdev/xamarin-forms-samples/blob/master/TodoMvvm/TodoMvvm/ViewFactory.cs
+     */
+
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class ViewTypeAttribute : Attribute
     {
@@ -14,7 +20,7 @@ namespace WackyTrivia.Abstracts
             ViewType = viewType;
         }
     }
-    // Can be replaced by all sorts of complexity and auto loading BS but this keeps it simple and loose
+
     static class ViewFactory
     {
         static Dictionary<Type, Type> typeDictionary = new Dictionary<Type, Type>();
@@ -35,11 +41,7 @@ namespace WackyTrivia.Abstracts
             }
             else
             {
-                //	var attribute = viewModelType.GetTypeInfo ().GetCustomAttribute<ViewTypeAttribute> ();
-                //	if (attribute == null)
                 throw new InvalidOperationException("Unknown View for ViewModelType");
-                //	viewType = attribute.ViewType;
-                //	typeDictionary[viewModelType] = viewType; // cache
             }
 
             var page = (Page)Activator.CreateInstance(viewType);
@@ -60,11 +62,7 @@ namespace WackyTrivia.Abstracts
             }
             else
             {
-                //	var attribute = viewModelType.GetTypeInfo ().GetCustomAttribute<ViewTypeAttribute> ();
-                //	if (attribute == null)
                 throw new InvalidOperationException("Unknown View for ViewModel object");
-                //	viewType = attribute.ViewType;
-                //	typeDictionary[viewModelType] = viewType; // cache
             }
 
             var page = (Page)Activator.CreateInstance(viewType);

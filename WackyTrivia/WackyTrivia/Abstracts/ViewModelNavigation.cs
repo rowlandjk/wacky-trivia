@@ -3,6 +3,10 @@ using Xamarin.Forms;
 
 namespace WackyTrivia.Abstracts
 {
+    /*  Class implemented from Xamarin's TodoMvvm example - used to attach page Navigation
+     *  logic in between ViewModels (similar to Navigation.Push events)
+     *  https://github.com/conceptdev/xamarin-forms-samples/blob/master/TodoMvvm/TodoMvvm/ViewModelNavigation.cs
+     */
     class ViewModelNavigation
     {
         readonly Page implementor;

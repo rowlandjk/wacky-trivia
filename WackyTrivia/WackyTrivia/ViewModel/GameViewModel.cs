@@ -11,11 +11,19 @@ using Xamarin.Forms;
 
 namespace WackyTrivia.ViewModel
 {
+    /*  ViewModel for Game execution - displays questions and answers modally on the same view
+     *  Author: Jesse Rowland
+     */
+
     class GameViewModel : BaseViewModel
     {
+        //string to hold the Question string, or Correct/Incorrect once an answer is given
         private string _questionQuery;
+        //boolean that sets the view layout for a question when true
         private bool _questionLayout;
+        //boolean that sets the view layout for an answer response when true
         private bool _answerLayout;
+        //property to store the question item from the database
         public string QuestionItem { get; set; }
 
         public bool AnswerLayout
@@ -48,7 +56,9 @@ namespace WackyTrivia.ViewModel
             }
         }
 
-        //Todo: Refactor into list of structures with <int, string, Command>
+        /*  Each answer on the view has an Item id, Item string (name), and a command attached to the item
+         *  Todo: Refactor into list of structures with <int, string, Command>
+         */
         public int Answer1Id { get; set; }
         public string Answer1String { get; set; }
         public ICommand Answer1Command { get; set; }
@@ -62,13 +72,20 @@ namespace WackyTrivia.ViewModel
         public string Answer4String { get; set; }
         public ICommand Answer4Command { get; set; }
 
+        //Command to exit the game back to the MainPage
         public ICommand ExitGameCommand { get; set; }
+        //Command to continue to the next question
         public ICommand ContinueCommand { get; set; }
 
         public GameViewModel()
         {
+            /*  Get all items from the database
+            *   Todo: Obviously not efficient - when items are sourced outside the local db,
+            *   implement lazy loading
+            */
             var itemList = App.Database.GetItems().ToList();
 
+            //bind the items to the view
             Answer1Id = itemList[4].Id;
             Answer1String = itemList[4].Name;
             Answer2Id = itemList[2].Id;
@@ -78,11 +95,13 @@ namespace WackyTrivia.ViewModel
             Answer4Id = itemList[3].Id;
             Answer4String = itemList[3].Name;
 
+            //bind the question to the view
             QuestionItem = itemList[0].Name;
             QuestionQuery = "Which of the below is closer in value?";
             QuestionLayout = true;
             AnswerLayout = false;
 
+            //bind button commands to the view
             Answer1Command = new Command(Answer1);
             Answer2Command = new Command(Answer2);
             Answer3Command = new Command(Answer3);
@@ -91,6 +110,9 @@ namespace WackyTrivia.ViewModel
             ContinueCommand = new Command(Continue);
         }
 
+        /*  Answer commands 1-4 have preset answers currently
+         *  Todo: Create method to evaluate item value, that determines answer correctness
+         */
         public void Answer1()
         {
             QuestionQuery = "Correct!";
@@ -120,12 +142,14 @@ namespace WackyTrivia.ViewModel
             Navigation.PopToRoot();
         }
 
+        //Push next question
         public void Continue()
         {
             var game = new GameViewModel();
             Navigation.Push(ViewFactory.CreatePage(game));
         }
 
+        //flip the layout boolean variables to switch page layout
         public void LayoutSwitch()
         {
             QuestionLayout = !QuestionLayout;

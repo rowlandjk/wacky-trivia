@@ -7,6 +7,10 @@ using SQLite.Net.Attributes;
 
 namespace WackyTrivia.Model
 {
+    /*
+     * Data model for an Item to be used in Game questions.
+     * Author: Jesse Rowland
+     */
     public class Item
     {
         [PrimaryKey, AutoIncrement]

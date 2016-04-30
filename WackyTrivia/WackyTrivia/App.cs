@@ -10,8 +10,13 @@ using Xamarin.Forms;
 
 namespace WackyTrivia
 {
+    /*  App class that is called on startup - handles connection to database, registering
+     *  ViewModels, Views, and Navigation elements.
+     *  Author: Jesse Rowland
+     */
     public class App : Application
     {
+        //variable to hold database connection
         static WackyTriviaDatabase _database;
 
         public static WackyTriviaDatabase Database
@@ -19,6 +24,7 @@ namespace WackyTrivia
             get { return _database ?? (_database = new WackyTriviaDatabase()); }
         }
 
+        //Registers view and view model bindings
         static void RegisterTypes()
         {
             ViewFactory.Register<MainPage, MainPageViewModel>();
@@ -26,6 +32,7 @@ namespace WackyTrivia
             ViewFactory.Register<StatsPage, StatsPageViewModel>();
         }
 
+        //displays the MainPage on App startup
         public App()
         {
             RegisterTypes ();

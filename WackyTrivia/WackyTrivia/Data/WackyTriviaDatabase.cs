@@ -23,6 +23,7 @@ namespace WackyTrivia.Data
             }
         }
 
+        // Method to get all items from the Items table
         public IEnumerable<Item> GetItems()
         {
             lock (locker)
@@ -31,6 +32,7 @@ namespace WackyTrivia.Data
             }
         }
 
+        // Static function to check if a Table exists in the database
         public static bool TableExists<T> (SQLiteConnection conn)
         {
             const string cmdText = "SELECT name FROM sqlite_master WHERE "
@@ -39,6 +41,9 @@ namespace WackyTrivia.Data
             return cmd.ExecuteScalar<string>() != null;
         }
 
+        /*Manually seeds the Item database -- later iterations will source this from
+        * an external server.
+        */
         public void Seed()
         {
             database.CreateTable<Item>();
