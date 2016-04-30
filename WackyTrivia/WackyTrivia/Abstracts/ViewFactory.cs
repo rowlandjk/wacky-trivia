@@ -10,7 +10,7 @@ namespace WackyTrivia.Abstracts
      * https://github.com/conceptdev/xamarin-forms-samples/blob/master/TodoMvvm/TodoMvvm/ViewFactory.cs
      */
 
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     public class ViewTypeAttribute : Attribute
     {
         public Type ViewType { get; private set; }
@@ -23,21 +23,21 @@ namespace WackyTrivia.Abstracts
 
     static class ViewFactory
     {
-        static Dictionary<Type, Type> typeDictionary = new Dictionary<Type, Type>();
+        static readonly Dictionary<Type, Type> TypeDictionary = new Dictionary<Type, Type>();
         public static void Register<TView, TViewModel>()
             where TView : Page
             where TViewModel : BaseViewModel
         {
-            typeDictionary[typeof(TViewModel)] = typeof(TView);
+            TypeDictionary[typeof(TViewModel)] = typeof(TView);
         }
 
         public static Page CreatePage(Type viewModelType)
         {
-            Type viewType = null;
+            Type viewType;
 
-            if (typeDictionary.ContainsKey(viewModelType))
+            if (TypeDictionary.ContainsKey(viewModelType))
             {
-                viewType = typeDictionary[viewModelType];
+                viewType = TypeDictionary[viewModelType];
             }
             else
             {
@@ -55,10 +55,10 @@ namespace WackyTrivia.Abstracts
 
         public static Page CreatePage(BaseViewModel viewModel)
         {
-            Type viewType = null;
-            if (typeDictionary.ContainsKey(viewModel.GetType()))
+            Type viewType;
+            if (TypeDictionary.ContainsKey(viewModel.GetType()))
             {
-                viewType = typeDictionary[viewModel.GetType()];
+                viewType = TypeDictionary[viewModel.GetType()];
             }
             else
             {

@@ -11,7 +11,6 @@ namespace WackyTrivia.Droid
 {
     public class SQLite_Android : ISQLite
     {
-        public SQLite_Android() { }
         public SQLiteConnection GetConnection()
         {
             var sqliteFilename = "restaurantdb.db";

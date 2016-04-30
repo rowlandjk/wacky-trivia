@@ -13,7 +13,6 @@ namespace WackyTrivia.iOS
     // ...
     public class SQLite_iOS : ISQLite
     {
-        public SQLite_iOS() { }
         public SQLiteConnection GetConnection()
         {
             var sqliteFilename = "restaurantdb.db";

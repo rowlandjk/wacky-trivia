@@ -1,9 +1,5 @@
-﻿using System.ComponentModel;
-using System.Linq;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using WackyTrivia.Abstracts;
-using WackyTrivia.Data;
-using WackyTrivia.View;
 using Xamarin.Forms;
 
 namespace WackyTrivia.ViewModel

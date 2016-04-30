@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WackyTrivia.Abstracts;
+﻿using WackyTrivia.Abstracts;
 using WackyTrivia.Data;
 using WackyTrivia.View;
 using WackyTrivia.ViewModel;
@@ -19,10 +15,8 @@ namespace WackyTrivia
         //variable to hold database connection
         static WackyTriviaDatabase _database;
 
-        public static WackyTriviaDatabase Database
-        {
-            get { return _database ?? (_database = new WackyTriviaDatabase()); }
-        }
+        public static WackyTriviaDatabase Database => _database 
+            ?? (_database = new WackyTriviaDatabase());
 
         //Registers view and view model bindings
         static void RegisterTypes()

@@ -1,5 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace WackyTrivia.Abstracts
 {
@@ -9,16 +8,16 @@ namespace WackyTrivia.Abstracts
      */
     class ViewModelNavigation
     {
-        readonly Page implementor;
+        readonly Page _implementor;
 
         public ViewModelNavigation(Page implementor)
         {
-            this.implementor = implementor;
+            _implementor = implementor;
         }
 
         public void Push(Page page)
         {
-            implementor.Navigation.PushAsync(page);
+            _implementor.Navigation.PushAsync(page);
         }
 
         public void Push<TViewModel>()
@@ -29,17 +28,17 @@ namespace WackyTrivia.Abstracts
 
         public void Pop()
         {
-            implementor.Navigation.PopAsync();
+            _implementor.Navigation.PopAsync();
         }
 
         public void PopToRoot()
         {
-            implementor.Navigation.PopToRootAsync();
+            _implementor.Navigation.PopToRootAsync();
         }
 
         public void PushModal(Page page)
         {
-            implementor.Navigation.PushModalAsync(page);
+            _implementor.Navigation.PushModalAsync(page);
         }
 
         public void PushModal<TViewModel>()
@@ -50,10 +49,10 @@ namespace WackyTrivia.Abstracts
 
         public void PopModal()
         {
-            var modalParent = implementor;
-            while (modalParent.Parent as Page != null)
+            var modalParent = _implementor;
+            while (modalParent.Parent is Page)
                 modalParent = (Page)modalParent.Parent;
-            implementor.Navigation.PopModalAsync();
+            _implementor.Navigation.PopModalAsync();
         }
     }
 }
