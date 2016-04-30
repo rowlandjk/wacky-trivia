@@ -33,8 +33,6 @@ namespace WackyTrivia
             MainPage = new NavigationPage(ViewFactory.CreatePage(new MainPageViewModel()));
         }
 
-
-
         protected override void OnStart()
         {
             // Handle when your app starts

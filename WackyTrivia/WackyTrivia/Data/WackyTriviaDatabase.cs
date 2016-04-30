@@ -9,13 +9,18 @@ namespace WackyTrivia.Data
 {
     public class WackyTriviaDatabase
     {
-        SQLiteConnection database;
+        public SQLiteConnection database;
         static object locker = new object();
 
         public WackyTriviaDatabase()
         {
+            //establish db connection
             database = DependencyService.Get<ISQLite>().GetConnection();
-            //Seed();
+            //seed the database if it does not exist on the phone yet
+            if(!TableExists<Item>(database))
+            {
+                Seed();
+            }
         }
 
         public IEnumerable<Item> GetItems()
@@ -26,7 +31,14 @@ namespace WackyTrivia.Data
             }
         }
 
-        /*
+        public static bool TableExists<T> (SQLiteConnection conn)
+        {
+            const string cmdText = "SELECT name FROM sqlite_master WHERE "
+                + "type='table' AND name=?";
+            var cmd = conn.CreateCommand(cmdText, typeof(T).Name);
+            return cmd.ExecuteScalar<string>() != null;
+        }
+
         public void Seed()
         {
             database.CreateTable<Item>();
@@ -59,6 +71,5 @@ namespace WackyTrivia.Data
                 database.Insert(item6);
             }
         }
-        */
     }
 }
